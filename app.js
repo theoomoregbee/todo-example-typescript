@@ -29,6 +29,7 @@ System.register(['./TodoServices', './DataAccess'], function(exports_1, context_
                     this.input = document.getElementById('input');
                     this.addBtn = document.getElementById('addBtn');
                     this.deleteBtn = document.getElementById('deleteBtn');
+                    this.resetBtn = document.getElementById('resetBtn');
                     this.list = document.getElementById('items');
                     //bind events
                     this.bindEvents();
@@ -40,15 +41,23 @@ System.register(['./TodoServices', './DataAccess'], function(exports_1, context_
                     //()=>{} helps us to access our this of the parent class
                     this.addBtn.addEventListener('click', function () { _this.addTodo(); });
                     this.deleteBtn.addEventListener('click', function () { _this.deleteTodo(); });
+                    this.resetBtn.addEventListener('click', function () { _this.resetTodo(); });
                 };
                 App.prototype.addTodo = function () {
                     if (this.input.value == "")
                         throw new Error('Input Is Required');
                     this.addRecord({ name: this.input.value, completed: false, dateAdded: new Date() });
+                    this.input.value = "";
                     this.fetch();
                 };
                 App.prototype.deleteTodo = function () {
                     console.log('DELETE TODO', this.input);
+                };
+                App.prototype.resetTodo = function () {
+                    if (confirm('Are You Sure You Want To Reset This Todo List')) {
+                        this.reset();
+                        this.fetch();
+                    }
                 };
                 App.prototype.fetch = function () {
                     var record = this.getRecords();

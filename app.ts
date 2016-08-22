@@ -12,6 +12,7 @@ class App extends DataAccess{
     input:HTMLInputElement;
     addBtn:HTMLButtonElement;
     deleteBtn:HTMLButtonElement ;
+    resetBtn:HTMLButtonElement ;
     list:HTMLUListElement;
 
     constructor (){
@@ -20,6 +21,7 @@ class App extends DataAccess{
         this.input = <HTMLInputElement> document.getElementById('input');
         this.addBtn =  <HTMLButtonElement>  document.getElementById('addBtn');
         this.deleteBtn =  <HTMLButtonElement> document.getElementById('deleteBtn');
+        this.resetBtn =  <HTMLButtonElement> document.getElementById('resetBtn');
         this.list =  <HTMLUListElement>  document.getElementById('items');
 
         //bind events
@@ -34,6 +36,7 @@ class App extends DataAccess{
        //()=>{} helps us to access our this of the parent class
         this.addBtn.addEventListener('click', ()=>{this.addTodo()});
         this.deleteBtn.addEventListener('click', ()=>{ this.deleteTodo()});
+        this.resetBtn.addEventListener('click', ()=>{ this.resetTodo()});
        }
 
 
@@ -41,11 +44,19 @@ class App extends DataAccess{
          if(this.input.value=="")
              throw new Error('Input Is Required');
         this.addRecord({name:this.input.value, completed:false, dateAdded:new Date()});
+        this.input.value="";
         this.fetch();
     }
 
     deleteTodo(): void {
         console.log('DELETE TODO',this.input);
+    }
+
+    resetTodo():void{
+       if(confirm('Are You Sure You Want To Reset This Todo List')){
+           this.reset();
+           this.fetch();
+       }
     }
 
     fetch() : void {
