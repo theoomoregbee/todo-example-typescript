@@ -19,6 +19,6 @@ export function dateFormatter(date:Date):string{
     let monthIndex:number = date.getMonth();
     var year = date.getFullYear();
 
-    return `${date.getDate()} ${monthNames[monthIndex].substring(0,3)} ${year}`;
+    return `${date.getHours()}:${date.getMinutes()}, ${date.getDate()} ${monthNames[monthIndex].substring(0,3)} ${year}`;
 
 }

@@ -13,7 +13,7 @@ System.register([], function(exports_1, context_1) {
             "November", "December"];
         var monthIndex = date.getMonth();
         var year = date.getFullYear();
-        return date.getDate() + " " + monthNames[monthIndex].substring(0, 3) + " " + year;
+        return date.getHours() + ":" + date.getMinutes() + ", " + date.getDate() + " " + monthNames[monthIndex].substring(0, 3) + " " + year;
     }
     exports_1("dateFormatter", dateFormatter);
     return {

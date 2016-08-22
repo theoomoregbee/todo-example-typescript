@@ -42,6 +42,8 @@ System.register(['./TodoServices', './DataAccess'], function(exports_1, context_
                     this.deleteBtn.addEventListener('click', function () { _this.deleteTodo(); });
                 };
                 App.prototype.addTodo = function () {
+                    if (this.input.value == "")
+                        throw new Error('Input Is Required');
                     this.addRecord({ name: this.input.value, completed: false, dateAdded: new Date() });
                     this.fetch();
                 };
