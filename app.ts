@@ -3,7 +3,7 @@
  * Theophilus Omoregbee <theo4u@ymail.com>
  */
 
-import  {TodoItem} from './TodoServices';
+import  {TodoItem,dateFormatter} from './TodoServices';
 import {DataAccess} from './DataAccess';
 
 class App extends DataAccess{
@@ -51,7 +51,7 @@ class App extends DataAccess{
         let UI = "";
         for(let value of record)
              UI +=`<li class="list-group-item">
-                        <input type="checkbox" class="check"> ${value.name} <span class="badge">${value.dateAdded}</span>
+                      <input type="checkbox" class="check"> ${value.name} <span class="badge">${dateFormatter(new Date(value.dateAdded.toString()))}</span>
                    </li>`;
 
         this.list.innerHTML = UI;

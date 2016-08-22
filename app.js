@@ -2,7 +2,7 @@
  * Created by SQ04 on 8/22/2016.
  * Theophilus Omoregbee <theo4u@ymail.com>
  */
-System.register(['./DataAccess'], function(exports_1, context_1) {
+System.register(['./TodoServices', './DataAccess'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __extends = (this && this.__extends) || function (d, b) {
@@ -10,10 +10,13 @@ System.register(['./DataAccess'], function(exports_1, context_1) {
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
-    var DataAccess_1;
+    var TodoServices_1, DataAccess_1;
     var App;
     return {
         setters:[
+            function (TodoServices_1_1) {
+                TodoServices_1 = TodoServices_1_1;
+            },
             function (DataAccess_1_1) {
                 DataAccess_1 = DataAccess_1_1;
             }],
@@ -50,7 +53,7 @@ System.register(['./DataAccess'], function(exports_1, context_1) {
                     var UI = "";
                     for (var _i = 0, record_1 = record; _i < record_1.length; _i++) {
                         var value = record_1[_i];
-                        UI += "<li class=\"list-group-item\">\n                        <input type=\"checkbox\" class=\"check\"> " + value.name + " <span class=\"badge\">" + value.dateAdded + "</span>\n                   </li>";
+                        UI += "<li class=\"list-group-item\">\n                      <input type=\"checkbox\" class=\"check\"> " + value.name + " <span class=\"badge\">" + TodoServices_1.dateFormatter(new Date(value.dateAdded.toString())) + "</span>\n                   </li>";
                     }
                     this.list.innerHTML = UI;
                 };
