@@ -4,14 +4,15 @@
  * Theophilus Omoregbee <theo4u@ymail.com>
  */
 
-interface  window{
-    localStorage:any;
-}
 
 class DataAccess {
       private  records : TodoItem[];
       private identifier:string = "todo-theo";
       private  window : window;
+
+    constructor(){
+
+    }
 
     addRecord(item:TodoItem):void{
       this.records.push(item);

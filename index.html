@@ -7,7 +7,28 @@
 </head>
 <body>
 
+<div class="col-lg-offset-4 col-lg-4" style="margin-top: 4px">
+    <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading">To Do List <span class="badge" id="totalBadge">5</span></div>
+        <div class="panel-body">
+            <form action="#" class="form-inline">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="name" placeholder="Todo Entry">
+                </div>
+                <button type="button" class="btn btn-default" id="addBtn">Add <span class="glyphicon glyphicon-edit"></span></button>
+            </form>
+        </div>
 
+        <!-- List group -->
+        <ul class="list-group" id="items">
+            <li class="list-group-item"><input type="checkbox"> Todo Name  <span class="badge">12-12-2015</span></li>
+        </ul>
+
+       <p align="center" style="padding-top: 3px; vertical-align: middle" > <button type="button" class="btn btn-danger" id="deleteBtn">Delete <span class="glyphicon glyphicon-trash"></span></button></p>
+
+    </div>
+</div>
 
 <script src="third/system.js"></script>
 <script type="text/javascript">

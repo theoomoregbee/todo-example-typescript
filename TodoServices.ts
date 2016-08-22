@@ -8,3 +8,7 @@ interface TodoItem {
         dateAdded:Date;
         completed:boolean;
 }
+
+interface  window {
+    localStorage:any;
+}
