@@ -3,12 +3,8 @@
  * Theophilus Omoregbee
  */
 
-interface TodoItem {
+export interface TodoItem {
         name:string;
         dateAdded:Date;
         completed:boolean;
-}
-
-interface  window {
-    localStorage:any;
 }

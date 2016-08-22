@@ -3,3 +3,65 @@
  * Theophilus Omoregbee <theo4u@ymail.com>
  */
 
+import  {TodoItem} from './TodoServices';
+import {DataAccess} from './DataAccess';
+
+class App extends DataAccess{
+
+    totalBadge:HTMLSpanElement;
+    input:HTMLInputElement;
+    addBtn:HTMLButtonElement;
+    deleteBtn:HTMLButtonElement ;
+    list:HTMLUListElement;
+
+    constructor (){
+        super();
+        this.totalBadge =  <HTMLSpanElement> document.getElementById('totalBadge');
+        this.input = <HTMLInputElement> document.getElementById('input');
+        this.addBtn =  <HTMLButtonElement>  document.getElementById('addBtn');
+        this.deleteBtn =  <HTMLButtonElement> document.getElementById('deleteBtn');
+        this.list =  <HTMLUListElement>  document.getElementById('list');
+
+        //bind events
+         this.bindEvents();
+
+        //fetch Record
+        this.fetch();
+    }
+
+
+    bindEvents() : void {
+       //()=>{} helps us to access our this of the parent class
+        this.addBtn.addEventListener('click', ()=>{this.addTodo()});
+        this.deleteBtn.addEventListener('click', ()=>{ this.deleteTodo()});
+         }
+
+
+    addTodo(): void {
+       console.log('Add TODO',this.input.value);
+
+        this.addRecord({name:this.input.value, completed:false, dateAdded:new Date()});
+        this.fetch();
+    }
+
+    deleteTodo(): void {
+        console.log('DELETE TODO',this.input);
+    }
+
+    fetch(): void{
+        let record : TodoItem[] = this.getRecords();
+        console.log("Record", this.getRecords());
+  /*
+        let UI ="";
+
+        for(let value of record){
+             UI +=`<li class="list-group-item">
+                        <input type="checkbox" class="check"> ${value.name} <span class="badge">${value.dateAdded}</span>
+                     </li>`;
+         }
+      this.list.innerHTML = UI;*/
+    }
+
+}
+
+new App();

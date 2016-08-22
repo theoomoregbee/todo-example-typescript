@@ -3,36 +3,61 @@
  *
  * Theophilus Omoregbee <theo4u@ymail.com>
  */
-var DataAccess = (function () {
-    function DataAccess() {
-        this.identifier = "todo-theo";
+System.register([], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
+    var DataAccess;
+    return {
+        setters:[],
+        execute: function() {
+            DataAccess = (function () {
+                function DataAccess() {
+                    this.identifier = "todo-theo";
+                    //check if it was empty before just store [] inside first
+                    if (window.localStorage.getItem(this.identifier) == null) {
+                        this.reset();
+                    }
+                }
+                DataAccess.prototype.addRecord = function (item) {
+                    var obj = this.getRecords();
+                    obj.push(item);
+                    this.saveRecord(obj);
+                };
+                DataAccess.prototype.getRecords = function () {
+                    return JSON.parse(window.localStorage.getItem(this.identifier));
+                };
+                DataAccess.prototype.saveRecord = function (obj) {
+                    window.localStorage.setItem(this.identifier, JSON.stringify(obj));
+                };
+                DataAccess.prototype.reset = function () {
+                    window.localStorage.setItem(this.identifier, "[]");
+                };
+                DataAccess.prototype.deleteItem = function (item) {
+                    var obj = this.getRecords();
+                    obj = obj.filter(function (value) {
+                        return value != item;
+                    });
+                    this.saveRecord(obj);
+                };
+                DataAccess.prototype.deleteByIndex = function (index) {
+                    var obj = this.getRecords();
+                    obj.splice(index, 1);
+                    this.saveRecord(obj);
+                };
+                DataAccess.prototype.getItem = function (index) {
+                    return this.getRecords()[index];
+                };
+                return DataAccess;
+            }());
+            exports_1("DataAccess", DataAccess);
+        }
     }
-    DataAccess.prototype.addRecord = function (item) {
-        this.records.push(item);
-        this.saveRecord();
-    };
-    DataAccess.prototype.getRecords = function () {
-        var record = this.window.localStorage.getItem(this.identifier);
-        this.records = JSON.parse(record);
-        return this.records;
-    };
-    DataAccess.prototype.saveRecord = function () {
-        var record = JSON.stringify(this.records);
-        this.window.localStorage.setItem(this.identifier, record);
-    };
-    DataAccess.prototype.deleteItem = function (item) {
-        this.records = this.records.filter(function (value) {
-            return value != item;
-        });
-        this.saveRecord();
-    };
-    DataAccess.prototype.deleteByIndex = function (index) {
-        this.records.splice(index, 1);
-        this.saveRecord();
-    };
-    DataAccess.prototype.getItem = function (index) {
-        return this.records[index];
-    };
-    return DataAccess;
-}());
+});
+// let t:TodoItem[] = [{name:'Theophilus', dateAdded:new Date(), completed:false}, {name:'Theophilus Omoregbee', dateAdded:new Date(), completed:false}];
+//
+// window.localStorage.setItem("TestTheo", JSON.stringify(t));
+//
+// let v:TodoItem[] = <TodoItem[]> JSON.parse(window.localStorage.getItem("TestTheo"));
+//
+// console.log("Object:", v); 
 //# sourceMappingURL=DataAccess.js.map
