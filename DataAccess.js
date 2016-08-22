@@ -3,12 +3,16 @@
  *
  * Theophilus Omoregbee <theo4u@ymail.com>
  */
-System.register([], function(exports_1, context_1) {
+System.register(['./TodoServices'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
+    var TodoServices_1;
     var DataAccess;
     return {
-        setters:[],
+        setters:[
+            function (TodoServices_1_1) {
+                TodoServices_1 = TodoServices_1_1;
+            }],
         execute: function() {
             DataAccess = (function () {
                 function DataAccess() {
@@ -20,7 +24,10 @@ System.register([], function(exports_1, context_1) {
                 }
                 DataAccess.prototype.addRecord = function (item) {
                     var obj = this.getRecords();
-                    obj.push(item);
+                    if (!TodoServices_1.isExist(obj, 'name', item.name))
+                        obj.push(item);
+                    else
+                        throw new Error('Duplicate Of Record Found');
                     this.saveRecord(obj);
                 };
                 DataAccess.prototype.getRecords = function () {

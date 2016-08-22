@@ -4,7 +4,7 @@
  * Theophilus Omoregbee <theo4u@ymail.com>
  */
 
-import  {TodoItem} from './TodoServices';
+import  {TodoItem,isExist} from './TodoServices';
 
 
 export class DataAccess {
@@ -21,7 +21,10 @@ export class DataAccess {
 
     addRecord(item:TodoItem): void {
        let obj:TodoItem[] = this.getRecords();
-        obj.push(item);
+        if(!isExist(obj,'name',item.name)) //don't allow dublicate
+           obj.push(item);
+        else
+            throw  new Error('Duplicate Of Record Found');
         this.saveRecord(obj);
     }
 

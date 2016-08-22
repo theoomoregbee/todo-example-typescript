@@ -43,7 +43,7 @@ class App extends DataAccess {
     addTodo(): void {
          if(this.input.value=="")
              throw new Error('Input Is Required');
-        this.addRecord({name:this.input.value, completed:false, dateAdded:new Date()});
+        this.addRecord({name:this.input.value.trim(), completed:false, dateAdded:new Date()});
         this.input.value="";
         this.fetch();
     }
