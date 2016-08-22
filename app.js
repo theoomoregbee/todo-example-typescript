@@ -67,6 +67,8 @@ System.register(['./TodoServices', './DataAccess'], function(exports_1, context_
                         UI += "<li class=\"list-group-item\">\n                      <input type=\"checkbox\" class=\"check\"> " + value.name + " <span class=\"badge\">" + TodoServices_1.dateFormatter(new Date(value.dateAdded.toString())) + "</span>\n                   </li>";
                     }
                     this.list.innerHTML = UI;
+                    //update our total counter
+                    this.totalBadge.innerText = record.length.toString();
                 };
                 return App;
             }(DataAccess_1.DataAccess));

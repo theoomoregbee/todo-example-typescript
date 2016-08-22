@@ -6,7 +6,7 @@
 import  {TodoItem,dateFormatter} from './TodoServices';
 import {DataAccess} from './DataAccess';
 
-class App extends DataAccess{
+class App extends DataAccess {
 
     totalBadge:HTMLSpanElement;
     input:HTMLInputElement;
@@ -15,7 +15,7 @@ class App extends DataAccess{
     resetBtn:HTMLButtonElement ;
     list:HTMLUListElement;
 
-    constructor (){
+    constructor () {
         super();
         this.totalBadge =  <HTMLSpanElement> document.getElementById('totalBadge');
         this.input = <HTMLInputElement> document.getElementById('input');
@@ -66,8 +66,10 @@ class App extends DataAccess{
              UI +=`<li class="list-group-item">
                       <input type="checkbox" class="check"> ${value.name} <span class="badge">${dateFormatter(new Date(value.dateAdded.toString()))}</span>
                    </li>`;
-
         this.list.innerHTML = UI;
+
+        //update our total counter
+        this.totalBadge.innerText=record.length.toString();
     }
 
 }
