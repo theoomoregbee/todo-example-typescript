@@ -26,7 +26,7 @@ System.register(['./DataAccess'], function(exports_1, context_1) {
                     this.input = document.getElementById('input');
                     this.addBtn = document.getElementById('addBtn');
                     this.deleteBtn = document.getElementById('deleteBtn');
-                    this.list = document.getElementById('list');
+                    this.list = document.getElementById('items');
                     //bind events
                     this.bindEvents();
                     //fetch Record
@@ -39,7 +39,6 @@ System.register(['./DataAccess'], function(exports_1, context_1) {
                     this.deleteBtn.addEventListener('click', function () { _this.deleteTodo(); });
                 };
                 App.prototype.addTodo = function () {
-                    console.log('Add TODO', this.input.value);
                     this.addRecord({ name: this.input.value, completed: false, dateAdded: new Date() });
                     this.fetch();
                 };
@@ -48,16 +47,12 @@ System.register(['./DataAccess'], function(exports_1, context_1) {
                 };
                 App.prototype.fetch = function () {
                     var record = this.getRecords();
-                    console.log("Record", this.getRecords());
-                    /*
-                          let UI ="";
-                  
-                          for(let value of record){
-                               UI +=`<li class="list-group-item">
-                                          <input type="checkbox" class="check"> ${value.name} <span class="badge">${value.dateAdded}</span>
-                                       </li>`;
-                           }
-                        this.list.innerHTML = UI;*/
+                    var UI = "";
+                    for (var _i = 0, record_1 = record; _i < record_1.length; _i++) {
+                        var value = record_1[_i];
+                        UI += "<li class=\"list-group-item\">\n                        <input type=\"checkbox\" class=\"check\"> " + value.name + " <span class=\"badge\">" + value.dateAdded + "</span>\n                     </li>";
+                    }
+                    this.list.innerHTML = UI;
                 };
                 return App;
             }(DataAccess_1.DataAccess));

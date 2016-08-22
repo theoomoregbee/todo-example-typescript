@@ -56,11 +56,3 @@ export class DataAccess {
     }
 
 }
-
-// let t:TodoItem[] = [{name:'Theophilus', dateAdded:new Date(), completed:false}, {name:'Theophilus Omoregbee', dateAdded:new Date(), completed:false}];
-//
-// window.localStorage.setItem("TestTheo", JSON.stringify(t));
-//
-// let v:TodoItem[] = <TodoItem[]> JSON.parse(window.localStorage.getItem("TestTheo"));
-//
-// console.log("Object:", v);

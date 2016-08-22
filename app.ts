@@ -20,7 +20,7 @@ class App extends DataAccess{
         this.input = <HTMLInputElement> document.getElementById('input');
         this.addBtn =  <HTMLButtonElement>  document.getElementById('addBtn');
         this.deleteBtn =  <HTMLButtonElement> document.getElementById('deleteBtn');
-        this.list =  <HTMLUListElement>  document.getElementById('list');
+        this.list =  <HTMLUListElement>  document.getElementById('items');
 
         //bind events
          this.bindEvents();
@@ -34,12 +34,10 @@ class App extends DataAccess{
        //()=>{} helps us to access our this of the parent class
         this.addBtn.addEventListener('click', ()=>{this.addTodo()});
         this.deleteBtn.addEventListener('click', ()=>{ this.deleteTodo()});
-         }
+       }
 
 
     addTodo(): void {
-       console.log('Add TODO',this.input.value);
-
         this.addRecord({name:this.input.value, completed:false, dateAdded:new Date()});
         this.fetch();
     }
@@ -48,18 +46,15 @@ class App extends DataAccess{
         console.log('DELETE TODO',this.input);
     }
 
-    fetch(): void{
+    fetch() : void {
         let record : TodoItem[] = this.getRecords();
-        console.log("Record", this.getRecords());
-  /*
-        let UI ="";
-
-        for(let value of record){
+        let UI = "";
+        for(let value of record)
              UI +=`<li class="list-group-item">
                         <input type="checkbox" class="check"> ${value.name} <span class="badge">${value.dateAdded}</span>
                      </li>`;
-         }
-      this.list.innerHTML = UI;*/
+
+        this.list.innerHTML = UI;
     }
 
 }
