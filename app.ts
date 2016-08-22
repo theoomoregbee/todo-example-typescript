@@ -52,7 +52,7 @@ class App extends DataAccess{
         for(let value of record)
              UI +=`<li class="list-group-item">
                         <input type="checkbox" class="check"> ${value.name} <span class="badge">${value.dateAdded}</span>
-                     </li>`;
+                   </li>`;
 
         this.list.innerHTML = UI;
     }

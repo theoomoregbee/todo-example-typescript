@@ -50,7 +50,7 @@ System.register(['./DataAccess'], function(exports_1, context_1) {
                     var UI = "";
                     for (var _i = 0, record_1 = record; _i < record_1.length; _i++) {
                         var value = record_1[_i];
-                        UI += "<li class=\"list-group-item\">\n                        <input type=\"checkbox\" class=\"check\"> " + value.name + " <span class=\"badge\">" + value.dateAdded + "</span>\n                     </li>";
+                        UI += "<li class=\"list-group-item\">\n                        <input type=\"checkbox\" class=\"check\"> " + value.name + " <span class=\"badge\">" + value.dateAdded + "</span>\n                   </li>";
                     }
                     this.list.innerHTML = UI;
                 };
