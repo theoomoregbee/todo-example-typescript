@@ -30,14 +30,14 @@ class DataAccess {
     }
 
 
-    deleteItem(item:TodoItem):void{
+    deleteItem(item:TodoItem):void {
         this.records =  this.records.filter(function (value:TodoItem):boolean {
            return value != item;
        });
        this.saveRecord();
     }
 
-    deleteByIndex(index:number):void {
+    deleteByIndex(index:number): void {
      this.records.splice(index,1);
         this.saveRecord();
     }
