@@ -52,6 +52,7 @@ System.register(['./TodoServices', './DataAccess'], function(exports_1, context_
                 };
                 App.prototype.deleteTodo = function () {
                     console.log('DELETE TODO', this.input);
+                    console.log(new FormData(document.getElementById("form")));
                 };
                 App.prototype.resetTodo = function () {
                     if (confirm('Are You Sure You Want To Reset This Todo List')) {
@@ -64,7 +65,7 @@ System.register(['./TodoServices', './DataAccess'], function(exports_1, context_
                     var UI = "";
                     for (var _i = 0, record_1 = record; _i < record_1.length; _i++) {
                         var value = record_1[_i];
-                        UI += "<li class=\"list-group-item\">\n                      <input type=\"checkbox\" class=\"check\"> " + value.name + " <span class=\"badge\">" + TodoServices_1.dateFormatter(new Date(value.dateAdded.toString())) + "</span>\n                   </li>";
+                        UI += "<li class=\"list-group-item\">\n                      <input type=\"checkbox\" name=\"todo[]\" value=\"" + value.name + "\" class=\"check\"> " + value.name + " \n                      <span class=\"pull-right\">\n                        <span class=\"badge\">" + TodoServices_1.dateFormatter(new Date(value.dateAdded.toString())) + "</span>\n                        <button class=\"btn btn-danger btn-xs\" onclick=\"this.deleteItem(" + value.name + ")\"><span class=\"glyphicon glyphicon-remove\"></span></button>\n                      </span>\n                      \n                   </li>";
                     }
                     this.list.innerHTML = UI;
                     //update our total counter

@@ -6,18 +6,18 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 </head>
 <body>
-
 <div class="col-lg-offset-4 col-lg-4" style="margin-top: 4px">
     <div class="panel panel-primary">
         <!-- Default panel contents -->
         <div class="panel-heading">To Do List <span class="badge" id="totalBadge">...</span></div>
-        <div class="panel-body">
-            <form action="#" class="form-inline">
+        <form action="#" class="form-inline" id="form">
+            <div class="panel-body">
+
                 <div class="form-group">
-                  <input type="text" class="form-control" id="input" placeholder="Todo Entry">
+                  <input type="text" name="input" class="form-control" id="input" placeholder="Todo Entry">
                 </div>
                 <button type="button" class="btn btn-default" id="addBtn">Add <span class="glyphicon glyphicon-edit"></span></button>
-            </form>
+
         </div>
 
         <!-- List group -->
@@ -29,7 +29,7 @@
            <button type="button" class="btn btn-danger" id="deleteBtn">Delete <span class="glyphicon glyphicon-ok"></span></button>
            <button type="button" class="btn btn-danger" id="resetBtn">Reset <span class="glyphicon glyphicon-trash"></span></button>
        </p>
-
+        </form>
     </div>
 </div>
 

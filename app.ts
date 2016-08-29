@@ -50,6 +50,7 @@ class App extends DataAccess {
 
     deleteTodo(): void {
         console.log('DELETE TODO',this.input);
+        console.log(new FormData(<HTMLFormElement>document.getElementById("form")));
     }
 
     resetTodo():void{
@@ -64,7 +65,12 @@ class App extends DataAccess {
         let UI = "";
         for(let value of record)
              UI +=`<li class="list-group-item">
-                      <input type="checkbox" class="check"> ${value.name} <span class="badge">${dateFormatter(new Date(value.dateAdded.toString()))}</span>
+                      <input type="checkbox" name="todo[]" value="${value.name}" class="check"> ${value.name} 
+                      <span class="pull-right">
+                        <span class="badge">${dateFormatter(new Date(value.dateAdded.toString()))}</span>
+                        <button class="btn btn-danger btn-xs" onclick="this.deleteItem(${value.name})"><span class="glyphicon glyphicon-remove"></span></button>
+                      </span>
+                      
                    </li>`;
         this.list.innerHTML = UI;
 
